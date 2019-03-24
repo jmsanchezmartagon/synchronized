@@ -7,6 +7,10 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Function;
 
+/**
+ *
+ * @param <E> data
+ */
 public class FSync<E> {
 
     private Lock lock = new ReentrantLock();
