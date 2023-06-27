@@ -38,4 +38,13 @@ class FunctionSyncImplTest {
     }
 
 
+    @Test
+    void should_giveArgumentData_when_applyFunction() {
+        final var function = new FunctionSyncImpl<>();
+        int count = 0;
+        final var value = function.apply("key", count, (data) -> {
+            return data + 1;
+        });
+        Assertions.assertThat(value).isEqualTo(1);
+    }
 }

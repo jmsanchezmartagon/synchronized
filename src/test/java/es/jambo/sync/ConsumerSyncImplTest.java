@@ -3,6 +3,7 @@ package es.jambo.sync;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.UUID;
 import java.util.concurrent.Executors;
 
 class ConsumerSyncImplTest {
@@ -34,6 +35,16 @@ class ConsumerSyncImplTest {
         while (!service.isTerminated()) ;
 
         Assertions.assertThat(counter.value).isEqualTo(NUM_TASK * NUM_INC);
+    }
+
+
+    @Test
+    void should_giveDataArgument_when_callConsumer() {
+        final var consumer = new ConsumerSyncImpl<>();
+        final var data = UUID.randomUUID().toString();
+        consumer.accept("key", data, (value) -> {
+            Assertions.assertThat(value).isEqualTo(data);
+        });
     }
 
 
