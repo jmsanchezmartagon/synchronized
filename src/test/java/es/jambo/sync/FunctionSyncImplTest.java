@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.Executors;
 
-class FunctionSyncTest {
+class FunctionSyncImplTest {
 
 
     private static class MutableCounter {
@@ -16,7 +16,7 @@ class FunctionSyncTest {
     void should_printInOrder() {
         final var NUM_INC = 400;
         final var NUM_TASK = 2000;
-        final var sync = new FunctionSync<>();
+        final var sync = new FunctionSyncImpl<>();
         final var counter = new MutableCounter();
 
         var service = Executors.newFixedThreadPool(200);

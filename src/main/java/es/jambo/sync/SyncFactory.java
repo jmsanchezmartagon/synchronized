@@ -2,11 +2,11 @@ package es.jambo.sync;
 
 public final class SyncFactory {
 
-    public <K> ConsumerSync<K> createConsumer() {
-        return new ConsumerSync<>();
+    public <K> ConsumerSyncImpl<K> createConsumer() {
+        return new ConsumerSyncImpl<>();
     }
 
-    public <K> FunctionSync<K> createFunction() {
-        return new FunctionSync<>();
+    public <K> FunctionSyncImpl<K> createFunction() {
+        return new FunctionSyncImpl<>();
     }
 }

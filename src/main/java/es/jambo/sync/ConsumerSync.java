@@ -2,14 +2,13 @@ package es.jambo.sync;
 
 import java.util.function.Consumer;
 
-public class ConsumerSync<K> extends Sync<K> {
-    public <D> void accept(final K key, final D data, final Consumer<D> consumer) {
-        synchronized (getReference(key)) {
-            try {
-                consumer.accept(data);
-            } finally {
-                removeReference(key);
-            }
-        }
-    }
+public interface ConsumerSync<K> {
+
+    /**
+     * @param key      to sync, all threads of the same key will be blocked
+     * @param data     data that will be consumed
+     * @param consumer operation
+     * @param <D>      Data Type of the operation consumer
+     */
+    <D> void accept(K key, D data, Consumer<D> consumer);
 }
